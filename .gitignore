@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+.DS_Store
+npm-debug.log*
+
+# Secrets: never commit real keys
+.env
+.env.local
+.env.*.local
