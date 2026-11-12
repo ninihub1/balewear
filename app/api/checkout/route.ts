@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type Stripe from 'stripe';
 import { CURRENCY, getProduct, MAX_QTY_PER_LINE } from '@/lib/products';
 import { shippingConfig } from '@/lib/shipping';
-import { getStripe, siteUrl } from '@/lib/stripe';
+import { getStripe, paymentsEnabled, siteUrl } from '@/lib/stripe';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -67,6 +67,8 @@ export async function POST(req: Request) {
 
   const lines = parseLines(body);
   if (typeof lines === 'string') return fail(lines);
+
+  if (!paymentsEnabled()) return NextResponse.json({ url: '/checkout/demo' });
 
   const site = siteUrl();
   const publicImages = site.startsWith('https://');

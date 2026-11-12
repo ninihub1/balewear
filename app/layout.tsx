@@ -5,6 +5,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { formatPrice } from '@/lib/products';
 import { shippingConfig } from '@/lib/shipping';
+import { paymentsEnabled } from '@/lib/stripe';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
@@ -15,7 +16,7 @@ const archivo = Archivo_Black({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || 'http://localhost:3000';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -34,8 +35,9 @@ export const viewport: Viewport = { themeColor: '#0B0B0B' };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const { freeThresholdCents } = shippingConfig();
-  const banner =
-    freeThresholdCents > 0
+  const banner = !paymentsEnabled()
+    ? 'Preview site · Payments are switched off'
+    : freeThresholdCents > 0
       ? `Free shipping Australia-wide on orders over ${formatPrice(freeThresholdCents)}`
       : null;
 

@@ -15,7 +15,17 @@ export function getStripe(): Stripe {
   return client;
 }
 
+// Preview mode: with no Stripe key set, the site runs as a demo and checkout
+// goes to /checkout/demo instead of charging anyone.
+export function paymentsEnabled(): boolean {
+  return Boolean(process.env.STRIPE_SECRET_KEY);
+}
+
 export function siteUrl(): string {
-  const url = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const url =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.URL || // set by Netlify
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '') ||
+    'http://localhost:3000';
   return url.replace(/\/$/, '');
 }
