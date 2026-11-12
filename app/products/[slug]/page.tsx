@@ -41,14 +41,18 @@ export default function ProductPage({ params }: Props) {
       <section className="container pdp">
         <div className="pdp-gallery">
           {product.images.map((img, i) => (
-            <div key={img.src} className="pdp-main">
+            <div
+              key={img.src}
+              className="pdp-main"
+              style={product.photoBg ? { background: product.photoBg } : undefined}
+            >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
                 priority={i === 0}
                 sizes="(max-width: 860px) 100vw, 60vw"
-                className="cover"
+                className="contain"
               />
             </div>
           ))}

@@ -16,8 +16,15 @@ export type Product = {
   description: string;
   details: string[];
   featured?: boolean;
+  // Background behind photos that don't fill the frame. Defaults to light grey.
+  photoBg?: string;
   active: boolean;
 };
+
+// Product photos are served from the store's Shopify CDN.
+// Before closing the Shopify store, download them into /public/images and
+// change these paths, or the photos will stop loading.
+const CDN = 'https://cdn.shopify.com/s/files/1/0860/4270/5985/files/';
 
 export const CURRENCY = 'aud';
 export const MAX_QTY_PER_LINE = 10;
@@ -30,12 +37,15 @@ export const products: Product[] = [
     category: 'Outerwear',
     sizes: ['S', 'M', 'L', 'XL'],
     images: [
-      { src: '/images/wind_worn.jpg', alt: 'BALE Overthrown windbreaker worn with the hood up' },
+      { src: CDN + 'IMG_1793.jpg?v=1794141682', alt: 'BALE Overthrown windbreaker, front' },
+      { src: CDN + 'IMG_1796.jpg?v=1794141682', alt: 'BALE Overthrown windbreaker, back' },
+      { src: CDN + 'Photoroom_20261108_195345.jpg?v=1794141683', alt: 'BALE Overthrown windbreaker, detail' },
     ],
     description:
       'Full-zip hooded windbreaker with an all-over classical painting print and the BALE mark on the chest.',
     details: ['Full zip with hood', 'All-over print', 'BALE chest logo'],
     featured: true,
+    photoBg: '#000000',
     active: true,
   },
   {
@@ -44,7 +54,10 @@ export const products: Product[] = [
     priceCents: 4000,
     category: 'Tops',
     sizes: ['S', 'M', 'L', 'XL'],
-    images: [{ src: '/images/skate.jpg', alt: 'Two people wearing BALE t-shirts at a skatepark' }],
+    images: [
+      { src: CDN + 'Photoroom_20261108_200243.jpg?v=1794143311', alt: 'BALE t-shirt, front' },
+      { src: CDN + 'Photoroom_20261108_200349.jpg?v=1794143311', alt: 'BALE t-shirt, back' },
+    ],
     description: 'Heavyweight BALE tee with a front graphic print.',
     details: ['Crew neck', 'Front graphic'],
     active: true,
@@ -55,7 +68,11 @@ export const products: Product[] = [
     priceCents: 4000,
     category: 'Bottoms',
     sizes: ['S', 'M', 'L', 'XL'],
-    images: [{ src: '/images/sit.jpg', alt: 'BALE sweat shorts worn with a BALE tee' }],
+    images: [
+      { src: CDN + 'Photoroom_20261108_200843.jpg?v=1794140944', alt: 'BALE sweat shorts, front' },
+      { src: CDN + 'Photoroom_20261108_200924.jpg?v=1794140944', alt: 'BALE sweat shorts, back' },
+      { src: CDN + 'Photoroom_20261108_201004.jpg?v=1794140944', alt: 'BALE sweat shorts, detail' },
+    ],
     description: 'BALE sweat shorts with an elastic waist.',
     details: ['Elastic waist', 'Side pockets'],
     active: true,
@@ -66,7 +83,10 @@ export const products: Product[] = [
     priceCents: 4000,
     category: 'Accessories',
     sizes: ['One size'],
-    images: [{ src: '/images/logo.jpg', alt: 'BALE logo' }],
+    images: [
+      { src: CDN + '4FF8405D-AA68-40EE-96A2-B508DC30FD64.png?v=1794140608', alt: 'BALE beanie, front with BALE lettering' },
+      { src: CDN + 'Photoroom_20261108_200058.jpg?v=1794140608', alt: 'BALE beanie, back' },
+    ],
     description: 'Knit beanie with the BALE mark.',
     details: ['One size fits most'],
     active: true,
@@ -77,7 +97,10 @@ export const products: Product[] = [
     priceCents: 2000,
     category: 'Tops',
     sizes: ['S', 'M', 'L', 'XL'],
-    images: [{ src: '/images/vest.jpg', alt: 'White BALE vest on a clothing rail' }],
+    images: [
+      { src: CDN + 'Photoroom_20261108_200429.jpg?v=1794141541', alt: 'BALE vest, front' },
+      { src: CDN + 'Photoroom_20261108_200509.jpg?v=1794141541', alt: 'BALE vest, back' },
+    ],
     description: 'White sleeveless vest with the BALE logo on the front.',
     details: ['Sleeveless', 'Front logo print'],
     active: true,

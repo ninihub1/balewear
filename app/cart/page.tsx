@@ -52,8 +52,13 @@ export default function CartPage() {
             if (!p) return null;
             return (
               <li key={`${item.slug}-${item.size}`} className="cart-line">
-                <Link href={`/products/${p.slug}`} className="cart-thumb" aria-label={p.name}>
-                  <Image src={p.images[0].src} alt="" fill sizes="112px" className="cover" />
+                <Link
+                  href={`/products/${p.slug}`}
+                  className="cart-thumb"
+                  aria-label={p.name}
+                  style={p.photoBg ? { background: p.photoBg } : undefined}
+                >
+                  <Image src={p.images[0].src} alt="" fill sizes="112px" className="contain" />
                 </Link>
                 <div className="cart-line-body">
                   <div className="cart-line-top">

@@ -12,6 +12,11 @@ const MAX_BODY_BYTES = 10_000;
 
 type Line = { slug: string; size: string; qty: number };
 
+function productImage(src: string, site: string, sitePublic: boolean): string[] | undefined {
+  if (src.startsWith('https://')) return [src];
+  return sitePublic ? [`${site}${src}`] : undefined;
+}
+
 function fail(message: string, status = 400) {
   return NextResponse.json({ error: message }, { status });
 }
@@ -79,7 +84,7 @@ export async function POST(req: Request) {
         product_data: {
           name: product.name,
           description: `Size: ${line.size}`,
-          images: publicImages ? [`${site}${product.images[0].src}`] : undefined,
+          images: productImage(product.images[0].src, site, publicImages),
           metadata: { slug: product.slug, size: line.size },
         },
       },

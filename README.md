@@ -15,7 +15,7 @@ Customers browse products, pick sizes, add to a cart and pay on Stripe's hosted 
 
 ## Before launch: things the owner must check
 
-1. **Product photos.** The images in `public/images` are cropped from Instagram and low resolution. Replace them with full-size photos (portrait, about 1200 x 1500) and update the paths in `lib/products.ts`. The beanie has no photo yet and shows the logo.
+1. **Product photos.** Product photos load from the current Shopify store's image CDN (front first, back second; cards swap to the back photo on hover). Before cancelling Shopify, download them into `public/images` and change the paths in `lib/products.ts`, or they will stop loading. The hero and lookbook images in `public/images` are low-resolution crops from Instagram; swap in full-size originals.
 2. **Prices, sizes and descriptions** in `lib/products.ts`. Sizes are set to S to XL as a guess.
 3. **Policies** in `lib/pages.ts`. The shipping times (3 business days to dispatch) and returns window (14 days) are defaults. Change them to what the owner offers.
 4. **Shipping rates** in the environment variables below.

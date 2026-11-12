@@ -61,8 +61,8 @@ export default function HomePage() {
             </div>
             <div className="split-media">
               <Image
-                src={featured.images[0].src}
-                alt="Close-up of the windbreaker print"
+                src="/images/wind_worn.jpg"
+                alt="The windbreaker worn at night"
                 fill
                 sizes="(max-width: 860px) 100vw, 50vw"
                 className="cover"
