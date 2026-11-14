@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'BALE | Built for the streets',
     description: 'Heavyweight streetwear and art-print outerwear.',
-    images: ['/images/wind_worn.jpg'],
+    images: ['/images/lookbook/windbreaker-night.jpg'],
     type: 'website',
   },
 };

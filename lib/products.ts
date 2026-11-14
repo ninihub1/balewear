@@ -21,10 +21,7 @@ export type Product = {
   active: boolean;
 };
 
-// Product photos are served from the store's Shopify CDN.
-// Before closing the Shopify store, download them into /public/images and
-// change these paths, or the photos will stop loading.
-const CDN = 'https://cdn.shopify.com/s/files/1/0860/4270/5985/files/';
+const P = '/images/products/';
 
 export const CURRENCY = 'aud';
 export const MAX_QTY_PER_LINE = 10;
@@ -37,72 +34,96 @@ export const products: Product[] = [
     category: 'Outerwear',
     sizes: ['S', 'M', 'L', 'XL'],
     images: [
-      { src: CDN + 'IMG_1793.jpg?v=1794141682', alt: 'BALE Overthrown windbreaker, front' },
-      { src: CDN + 'IMG_1796.jpg?v=1794141682', alt: 'BALE Overthrown windbreaker, back' },
-      { src: CDN + 'Photoroom_20261108_195345.jpg?v=1794141683', alt: 'BALE Overthrown windbreaker, detail' },
+      { src: P + 'windbreaker-1.jpg', alt: 'Overthrown windbreaker, front, laid flat' },
+      { src: P + 'windbreaker-2.jpg', alt: 'Overthrown windbreaker, back' },
+      { src: P + 'windbreaker-3.jpg', alt: 'Overthrown windbreaker, front on black' },
+      { src: P + 'windbreaker-4.jpg', alt: 'Overthrown windbreaker, front on grey' },
     ],
     description:
-      'Full-zip hooded windbreaker with an all-over classical painting print and the BALE mark on the chest.',
-    details: ['Full zip with hood', 'All-over print', 'BALE chest logo'],
+      'Full-zip hooded windbreaker in bright blue, with a classical painting printed across the body and sleeves.',
+    details: ['Full zip with adjustable hood', 'All-over painting print', 'Drawcord hem', 'Elastic cuffs'],
     featured: true,
-    photoBg: '#000000',
     active: true,
   },
   {
     slug: 't-shirt',
-    name: 'T-shirt',
+    name: 'Future T-shirt',
     priceCents: 4000,
     category: 'Tops',
     sizes: ['S', 'M', 'L', 'XL'],
     images: [
-      { src: CDN + 'Photoroom_20261108_200243.jpg?v=1794143311', alt: 'BALE t-shirt, front' },
-      { src: CDN + 'Photoroom_20261108_200349.jpg?v=1794143311', alt: 'BALE t-shirt, back' },
+      { src: P + 'tshirt-1.jpg', alt: 'Black Future T-shirt, front graphic' },
+      { src: P + 'tshirt-2.jpg', alt: 'Black Future T-shirt, plain back' },
     ],
-    description: 'Heavyweight BALE tee with a front graphic print.',
-    details: ['Crew neck', 'Front graphic'],
+    description: 'Heavyweight black tee with the Future graphic on the front and the BALE mark at the hem.',
+    details: ['Boxy fit', 'Crew neck', 'Front graphic print'],
     active: true,
   },
   {
-    slug: 'sweat-shorts',
-    name: 'Sweat shorts',
+    slug: 'sweat-shorts-yellow',
+    name: 'Sweat shorts · Yellow',
     priceCents: 4000,
     category: 'Bottoms',
     sizes: ['S', 'M', 'L', 'XL'],
     images: [
-      { src: CDN + 'Photoroom_20261108_200843.jpg?v=1794140944', alt: 'BALE sweat shorts, front' },
-      { src: CDN + 'Photoroom_20261108_200924.jpg?v=1794140944', alt: 'BALE sweat shorts, back' },
-      { src: CDN + 'Photoroom_20261108_201004.jpg?v=1794140944', alt: 'BALE sweat shorts, detail' },
+      { src: P + 'shorts-yellow-1.jpg', alt: 'Yellow washed sweat shorts, front' },
+      { src: P + 'shorts-yellow-2.jpg', alt: 'Yellow sweat shorts, back' },
     ],
-    description: 'BALE sweat shorts with an elastic waist.',
-    details: ['Elastic waist', 'Side pockets'],
+    description: 'Washed yellow sweat shorts with raw hems and the BALE mark on the leg.',
+    details: ['Elastic drawstring waist', 'Side pockets and back pocket', 'Raw-cut hem'],
+    active: true,
+  },
+  {
+    slug: 'sweat-shorts-blue',
+    name: 'Sweat shorts · Blue',
+    priceCents: 4000,
+    category: 'Bottoms',
+    sizes: ['S', 'M', 'L', 'XL'],
+    images: [{ src: P + 'shorts-blue-1.jpg', alt: 'Blue washed sweat shorts, front' }],
+    description: 'Washed blue sweat shorts with raw hems and the BALE mark on the leg.',
+    details: ['Elastic drawstring waist', 'Side pockets', 'Raw-cut hem'],
+    active: true,
+  },
+  {
+    slug: 'sweat-shorts-grey',
+    name: 'Distressed sweat shorts · Grey',
+    priceCents: 4000,
+    category: 'Bottoms',
+    sizes: ['S', 'M', 'L', 'XL'],
+    images: [
+      { src: P + 'shorts-grey-1.jpg', alt: 'Grey distressed sweat shorts, front' },
+      { src: P + 'shorts-grey-2.jpg', alt: 'Grey distressed sweat shorts, back' },
+    ],
+    description: 'Grey sweat shorts with hand-distressed rips and a tonal BALE mark on the leg.',
+    details: ['Elastic waist', 'Distressed finish', 'Raw-cut hem'],
     active: true,
   },
   {
     slug: 'beanie',
-    name: 'Beanie',
+    name: 'Sun beanie',
     priceCents: 4000,
     category: 'Accessories',
     sizes: ['One size'],
     images: [
-      { src: CDN + '4FF8405D-AA68-40EE-96A2-B508DC30FD64.png?v=1794140608', alt: 'BALE beanie, front with BALE lettering' },
-      { src: CDN + 'Photoroom_20261108_200058.jpg?v=1794140608', alt: 'BALE beanie, back' },
+      { src: P + 'beanie-1.jpg', alt: 'Tan knit beanie with sun pattern and BALE lettering' },
+      { src: P + 'beanie-2.jpg', alt: 'Back of the sun beanie' },
     ],
-    description: 'Knit beanie with the BALE mark.',
-    details: ['One size fits most'],
+    description: 'Tan jacquard-knit beanie with an all-over sun pattern and BALE lettering on the front.',
+    details: ['Jacquard knit', 'One size fits most'],
     active: true,
   },
   {
     slug: 'vest',
-    name: 'Vest',
+    name: 'Vest · Red',
     priceCents: 2000,
     category: 'Tops',
     sizes: ['S', 'M', 'L', 'XL'],
     images: [
-      { src: CDN + 'Photoroom_20261108_200429.jpg?v=1794141541', alt: 'BALE vest, front' },
-      { src: CDN + 'Photoroom_20261108_200509.jpg?v=1794141541', alt: 'BALE vest, back' },
+      { src: P + 'vest-1.jpg', alt: 'Red vest with white star print' },
+      { src: P + 'vest-2.jpg', alt: 'Red vest with the BALE mark' },
     ],
-    description: 'White sleeveless vest with the BALE logo on the front.',
-    details: ['Sleeveless', 'Front logo print'],
+    description: 'Red sleeveless vest with a white star on one side and the BALE mark on the other.',
+    details: ['Sleeveless', 'Screen-printed graphics'],
     active: true,
   },
 ];

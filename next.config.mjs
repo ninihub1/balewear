@@ -10,11 +10,6 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'cdn.shopify.com', pathname: '/s/files/1/0860/4270/5985/**' },
-    ],
-  },
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }];
   },

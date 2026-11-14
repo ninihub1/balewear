@@ -94,6 +94,7 @@ button { font: inherit; }
 .card:hover .has-back .img-front, .card:focus-visible .has-back .img-front { opacity: 0; }
 .card:hover .has-back .img-back, .card:focus-visible .has-back .img-back { opacity: 1; }
 .card:hover .card-media img { transform: scale(1.02); }
+.card-large .card-media img { object-fit: cover; }
 @media (prefers-reduced-motion: reduce) { .card-media img { transition: none; } .card:hover .card-media img { transform: none; } }
 .card-large { grid-column: span 2; grid-row: span 2; }
 .card-large .card-media { aspect-ratio: auto; flex-grow: 1; min-height: 480px; }

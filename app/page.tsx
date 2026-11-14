@@ -8,19 +8,21 @@ export default function HomePage() {
   const products = getActiveProducts();
   const featured = products.find((p) => p.featured) ?? products[0];
   const rest = products.filter((p) => p.slug !== featured?.slug);
+  // Featured piece fills two rows, so four more cards complete the grid.
+  const homeRest = rest.slice(0, 4);
   const { flatRateCents, freeThresholdCents } = shippingConfig();
 
   return (
     <>
       <section className="hero">
         <Image
-          src="/images/wind_worn.jpg"
+          src="/images/lookbook/windbreaker-night.jpg"
           alt="Model wearing the BALE Overthrown windbreaker at night"
           fill
           priority
           sizes="100vw"
           className="cover"
-          style={{ objectPosition: '50% 30%' }}
+          style={{ objectPosition: '50% 38%' }}
         />
         <div className="hero-shade" />
         <div className="container hero-content">
@@ -41,10 +43,15 @@ export default function HomePage() {
         </div>
         <div className="grid">
           {featured && <ProductCard product={featured} large />}
-          {rest.map((p) => (
+          {homeRest.map((p) => (
             <ProductCard key={p.slug} product={p} />
           ))}
         </div>
+        {rest.length > homeRest.length && (
+          <div style={{ marginTop: 32 }}>
+            <Link href="/shop" className="btn btn-outline">Shop all {products.length} pieces</Link>
+          </div>
+        )}
       </section>
 
       {featured && (
@@ -61,12 +68,12 @@ export default function HomePage() {
             </div>
             <div className="split-media">
               <Image
-                src="/images/wind_worn.jpg"
-                alt="The windbreaker worn at night"
+                src="/images/products/windbreaker-3.jpg"
+                alt="The Overthrown windbreaker laid flat"
                 fill
                 sizes="(max-width: 860px) 100vw, 50vw"
-                className="cover"
-                style={{ objectPosition: '50% 80%' }}
+                className="contain"
+                style={{ background: '#000' }}
               />
             </div>
           </div>
@@ -82,9 +89,12 @@ export default function HomePage() {
             </a>
           </div>
           <div className="grid grid-3">
-            <div className="look"><Image src="/images/skate.jpg" alt="Two people in BALE tees at a skatepark" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
-            <div className="look"><Image src="/images/stall.jpg" alt="The BALE market stall with a clothing rail" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
-            <div className="look"><Image src="/images/sit.jpg" alt="Two people in BALE tees and shorts at night" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/skate-bowl.jpg" alt="Two people at a skate bowl in the Future tee and the BALE logo tee" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/stall-vest.jpg" alt="The BALE vest on the rail at a market stall" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/skate-duo.jpg" alt="Two people at a skatepark at night in Future tees" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/shorts-yellow.jpg" alt="Yellow BALE sweat shorts worn with the Future tee" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/skate-ledge.jpg" alt="Two people sitting on a skatepark ledge in BALE" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/stall-rack.jpg" alt="Browsing the BALE rail at a market" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
           </div>
         </div>
       </section>
