@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { getProduct, MAX_QTY_PER_LINE } from '@/lib/products';
+import { getBuyableProduct, MAX_QTY_PER_LINE } from '@/lib/products';
 
 export type CartItem = { slug: string; size: string; qty: number };
 
@@ -34,7 +34,7 @@ function sanitize(raw: unknown): CartItem[] {
       );
     })
     .filter((i) => {
-      const p = getProduct(i.slug);
+      const p = getBuyableProduct(i.slug);
       return !!p && p.sizes.includes(i.size);
     })
     .map((i) => ({ ...i, qty: Math.min(i.qty, MAX_QTY_PER_LINE) }));
@@ -94,7 +94,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo<CartContextValue>(() => {
     const count = items.reduce((n, i) => n + i.qty, 0);
     const subtotalCents = items.reduce((sum, i) => {
-      const p = getProduct(i.slug);
+      const p = getBuyableProduct(i.slug);
       return p ? sum + p.priceCents * i.qty : sum;
     }, 0);
     return { items, count, subtotalCents, ready, add, setQty, remove, clear };

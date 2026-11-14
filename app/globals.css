@@ -101,6 +101,7 @@ button { font: inherit; }
 .card-row { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600; }
 .card-large .card-row { font-size: 17px; }
 .tag { position: absolute; top: 16px; left: 16px; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 10px; }
+.tag-soon { background: var(--text); color: var(--bg); }
 
 /* Feature split */
 .split { display: flex; gap: 48px; align-items: center; background: var(--surface); border: 1px solid var(--line); padding: 48px; }

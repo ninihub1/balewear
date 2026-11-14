@@ -17,10 +17,13 @@ export function ProductCard({ product, large = false }: { product: Product; larg
           <Image src={back.src} alt="" aria-hidden="true" fill sizes={sizes} className="contain img-back" />
         )}
         {product.featured && large && <span className="tag">Signature piece</span>}
+        {product.comingSoon && <span className="tag tag-soon">Coming soon</span>}
       </div>
       <div className="card-row">
         <span>{product.name}</span>
-        <span>{formatPrice(product.priceCents)}</span>
+        <span className={product.comingSoon ? 'muted' : undefined}>
+          {product.comingSoon ? 'Coming soon' : formatPrice(product.priceCents)}
+        </span>
       </div>
     </Link>
   );

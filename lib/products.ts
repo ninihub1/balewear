@@ -16,6 +16,8 @@ export type Product = {
   description: string;
   details: string[];
   featured?: boolean;
+  // Shown on the site but not for sale yet: no price, can't be added to the cart or checked out.
+  comingSoon?: boolean;
   // Background behind photos that don't fill the frame. Defaults to light grey.
   photoBg?: string;
   active: boolean;
@@ -85,20 +87,6 @@ export const products: Product[] = [
     active: true,
   },
   {
-    slug: 'sweat-shorts-grey',
-    name: 'Distressed sweat shorts · Grey',
-    priceCents: 4000,
-    category: 'Bottoms',
-    sizes: ['S', 'M', 'L', 'XL'],
-    images: [
-      { src: P + 'shorts-grey-1.jpg', alt: 'Grey distressed sweat shorts, front' },
-      { src: P + 'shorts-grey-2.jpg', alt: 'Grey distressed sweat shorts, back' },
-    ],
-    description: 'Grey sweat shorts with hand-distressed rips and a tonal BALE mark on the leg.',
-    details: ['Elastic waist', 'Distressed finish', 'Raw-cut hem'],
-    active: true,
-  },
-  {
     slug: 'beanie',
     name: 'Sun beanie',
     priceCents: 4000,
@@ -126,6 +114,58 @@ export const products: Product[] = [
     details: ['Sleeveless', 'Screen-printed graphics'],
     active: true,
   },
+  // Coming soon: in the lookbook but not priced yet. Set comingSoon to false and add a price to sell them.
+  {
+    slug: 'sweat-shorts-grey',
+    name: 'Distressed sweat shorts · Grey',
+    priceCents: 0,
+    comingSoon: true,
+    category: 'Bottoms',
+    sizes: ['S', 'M', 'L', 'XL'],
+    images: [
+      { src: P + 'shorts-grey-1.jpg', alt: 'Grey distressed sweat shorts, front' },
+      { src: P + 'shorts-grey-2.jpg', alt: 'Grey distressed sweat shorts, back' },
+    ],
+    description: 'Grey sweat shorts with hand-distressed rips and a tonal BALE mark on the leg.',
+    details: ['Elastic waist', 'Distressed finish', 'Raw-cut hem'],
+    active: true,
+  },
+  {
+    slug: 'windbreaker-blue',
+    name: 'Windbreaker · Blue',
+    priceCents: 0,
+    comingSoon: true,
+    category: 'Outerwear',
+    sizes: ['S', 'M', 'L', 'XL'],
+    images: [{ src: P + 'windbreaker-blue-1.jpg', alt: 'Plain blue windbreaker on the BALE rail' }],
+    description: 'Full-zip hooded windbreaker in solid blue with a light-streak print and the crown mark on the chest.',
+    details: ['Full zip with adjustable hood', 'Elastic cuffs'],
+    active: true,
+  },
+  {
+    slug: 'logo-t-shirt',
+    name: 'Logo T-shirt',
+    priceCents: 0,
+    comingSoon: true,
+    category: 'Tops',
+    sizes: ['S', 'M', 'L', 'XL'],
+    images: [{ src: P + 'logo-tee-1.jpg', alt: 'Black T-shirt with a large BALE mark on the back' }],
+    description: 'Black heavyweight tee with an oversized BALE mark across the back.',
+    details: ['Boxy fit', 'Large back print'],
+    active: true,
+  },
+  {
+    slug: 'beanie-script',
+    name: 'Sun beanie · Script',
+    priceCents: 0,
+    comingSoon: true,
+    category: 'Accessories',
+    sizes: ['One size'],
+    images: [{ src: P + 'beanie-alt-1.jpg', alt: 'Tan sun-pattern beanie with script lettering' }],
+    description: 'The sun beanie with script lettering across the front.',
+    details: ['Jacquard knit', 'One size fits most'],
+    active: true,
+  },
 ];
 
 export function getActiveProducts(): Product[] {
@@ -134,6 +174,12 @@ export function getActiveProducts(): Product[] {
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug && p.active);
+}
+
+// Only products that can be bought: used by the cart and checkout.
+export function getBuyableProduct(slug: string): Product | undefined {
+  const p = getProduct(slug);
+  return p && !p.comingSoon ? p : undefined;
 }
 
 export function formatPrice(cents: number): string {

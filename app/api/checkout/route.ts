@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type Stripe from 'stripe';
-import { CURRENCY, getProduct, MAX_QTY_PER_LINE } from '@/lib/products';
+import { CURRENCY, getBuyableProduct, MAX_QTY_PER_LINE } from '@/lib/products';
 import { shippingConfig } from '@/lib/shipping';
 import { getStripe, paymentsEnabled, siteUrl } from '@/lib/stripe';
 
@@ -40,7 +40,7 @@ function parseLines(body: unknown): Line[] | string {
     }
     if (!Number.isInteger(qty) || qty < 1 || qty > MAX_QTY_PER_LINE) return 'Invalid quantity.';
 
-    const product = getProduct(slug);
+    const product = getBuyableProduct(slug);
     if (!product) return 'An item in your cart is no longer available.';
     if (!product.sizes.includes(size)) return `Size ${size} is not available for ${product.name}.`;
     if (product.soldOutSizes?.includes(size)) return `${product.name} in ${size} is sold out.`;
@@ -76,7 +76,7 @@ export async function POST(req: Request) {
 
   let subtotal = 0;
   const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = lines.map((line) => {
-    const product = getProduct(line.slug)!;
+    const product = getBuyableProduct(line.slug)!;
     subtotal += product.priceCents * line.qty;
     return {
       quantity: line.qty,

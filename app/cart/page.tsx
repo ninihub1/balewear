@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useCart } from '@/components/CartProvider';
-import { formatPrice, getProduct, MAX_QTY_PER_LINE } from '@/lib/products';
+import { formatPrice, getBuyableProduct, MAX_QTY_PER_LINE } from '@/lib/products';
 
 export default function CartPage() {
   const { items, subtotalCents, setQty, remove, ready } = useCart();
@@ -48,7 +48,7 @@ export default function CartPage() {
       <div className="cart">
         <ul className="cart-lines">
           {items.map((item) => {
-            const p = getProduct(item.slug);
+            const p = getBuyableProduct(item.slug);
             if (!p) return null;
             return (
               <li key={`${item.slug}-${item.size}`} className="cart-line">

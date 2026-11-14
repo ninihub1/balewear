@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useCart } from '@/components/CartProvider';
-import { formatPrice, getProduct } from '@/lib/products';
+import { formatPrice, getBuyableProduct } from '@/lib/products';
 
 // Stand-in for Stripe Checkout while the site runs without payment keys.
 export default function DemoCheckoutPage() {
@@ -45,7 +45,7 @@ export default function DemoCheckoutPage() {
           </thead>
           <tbody>
             {items.map((i) => {
-              const p = getProduct(i.slug);
+              const p = getBuyableProduct(i.slug);
               if (!p) return null;
               return (
                 <tr key={`${i.slug}-${i.size}`}>

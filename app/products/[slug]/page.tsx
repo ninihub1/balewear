@@ -63,7 +63,13 @@ export default function ProductPage({ params }: Props) {
             <p className="eyebrow">{product.category}</p>
             <h1 className="display pdp-title">{product.name}</h1>
             <p className="pdp-price">
-              {formatPrice(product.priceCents)} <span className="muted" style={{ fontSize: 14, fontWeight: 500 }}>AUD</span>
+              {product.comingSoon ? (
+                'Coming soon'
+              ) : (
+                <>
+                  {formatPrice(product.priceCents)} <span className="muted" style={{ fontSize: 14, fontWeight: 500 }}>AUD</span>
+                </>
+              )}
             </p>
           </div>
 
