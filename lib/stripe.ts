@@ -21,6 +21,12 @@ export function paymentsEnabled(): boolean {
   return Boolean(process.env.STRIPE_SECRET_KEY);
 }
 
+// Test mode: a Stripe test key (sk_test_...) opens Stripe's real checkout page,
+// but only test cards work and no money moves.
+export function testMode(): boolean {
+  return (process.env.STRIPE_SECRET_KEY || '').startsWith('sk_test_');
+}
+
 export function siteUrl(): string {
   const url =
     process.env.NEXT_PUBLIC_SITE_URL ||

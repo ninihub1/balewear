@@ -5,7 +5,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { formatPrice } from '@/lib/products';
 import { shippingConfig } from '@/lib/shipping';
-import { paymentsEnabled } from '@/lib/stripe';
+import { paymentsEnabled, testMode } from '@/lib/stripe';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
@@ -37,7 +37,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const { freeThresholdCents } = shippingConfig();
   const banner = !paymentsEnabled()
     ? 'Preview site · Payments are switched off'
-    : freeThresholdCents > 0
+    : testMode()
+      ? 'Test mode · Pay with card 4242 4242 4242 4242, any future date, any CVC'
+      : freeThresholdCents > 0
       ? `Free shipping Australia-wide on orders over ${formatPrice(freeThresholdCents)}`
       : null;
 
