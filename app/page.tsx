@@ -89,12 +89,12 @@ export default function HomePage() {
             </a>
           </div>
           <div className="grid grid-3">
-            <div className="look"><Image src="/images/lookbook/skate-bowl.jpg" alt="Two people at a skate bowl in the Future tee and the BALE logo tee" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
-            <div className="look"><Image src="/images/lookbook/stall-vest.jpg" alt="The BALE vest on the rail at a market stall" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
-            <div className="look"><Image src="/images/lookbook/skate-duo.jpg" alt="Two people at a skatepark at night in Future tees" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
-            <div className="look"><Image src="/images/lookbook/shorts-yellow.jpg" alt="Yellow BALE sweat shorts worn with the Future tee" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
-            <div className="look"><Image src="/images/lookbook/skate-ledge.jpg" alt="Two people sitting on a skatepark ledge in BALE" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
-            <div className="look"><Image src="/images/lookbook/stall-rack.jpg" alt="Browsing the BALE rail at a market" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/umbrella-front.jpg" alt="Model in the blue Crown windbreaker under a yellow umbrella at night" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/jersey-night.jpg" alt="Model in the Down Undr jersey under festoon lights" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/cap-hood.jpg" alt="Model pulling up the hood of the blue Crown windbreaker" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/jersey-walk.jpg" alt="Back of the Down Undr jersey on a night walk" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/hood.jpg" alt="Blue Crown windbreaker with the hood up" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
+            <div className="look"><Image src="/images/lookbook/jersey-umbrella.jpg" alt="Model in the Down Undr jersey and bandana" fill sizes="(max-width: 860px) 100vw, 33vw" className="cover" /></div>
           </div>
         </div>
       </section>
