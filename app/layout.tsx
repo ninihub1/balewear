@@ -6,6 +6,7 @@ import { Footer } from '@/components/Footer';
 import { formatPrice } from '@/lib/products';
 import { shippingConfig } from '@/lib/shipping';
 import { paymentsEnabled, testMode } from '@/lib/stripe';
+import { getSiteUrl } from '@/lib/site-url';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
@@ -16,7 +17,7 @@ const archivo = Archivo_Black({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || 'http://localhost:3000';
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

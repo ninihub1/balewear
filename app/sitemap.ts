@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next';
+import { getSiteUrl } from '@/lib/site-url';
 import { getActiveProducts } from '@/lib/products';
 import { infoPages } from '@/lib/pages';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+  const base = getSiteUrl();
   return [
     { url: `${base}/` },
     { url: `${base}/shop` },

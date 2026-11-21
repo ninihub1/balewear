@@ -1,5 +1,6 @@
 import 'server-only';
 import Stripe from 'stripe';
+import { getSiteUrl } from './site-url';
 
 let client: Stripe | null = null;
 
@@ -28,10 +29,5 @@ export function testMode(): boolean {
 }
 
 export function siteUrl(): string {
-  const url =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    process.env.URL || // set by Netlify
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '') ||
-    'http://localhost:3000';
-  return url.replace(/\/$/, '');
+  return getSiteUrl();
 }
