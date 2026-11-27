@@ -64,7 +64,6 @@ In the Stripe dashboard:
 | `NEXT_PUBLIC_SITE_URL` | The live address, for example `https://balewear.com` |
 | `SHIPPING_FLAT_RATE_CENTS` | Flat shipping in cents. `1000` is $10 |
 | `FREE_SHIPPING_THRESHOLD_CENTS` | Free shipping from this order total, in cents. `0` turns it off |
-| `SITE_PASSWORD` | Optional. Locks the site behind a password until launch. Delete it to open the site |
 | `SHIPPING_COUNTRIES` | Countries to ship to, for example `AU` or `AU,NZ` |
 
 3. Deploy.

@@ -45,7 +45,7 @@ export const products: Product[] = [
       'Full-zip hooded windbreaker in bright blue, with a classical painting printed across the body and sleeves.',
     details: ['Full zip with adjustable hood', 'All-over painting print', 'Drawcord hem', 'Elastic cuffs'],
     featured: true,
-    active: true,
+    active: false,
   },
   {
     slug: 't-shirt',
@@ -59,7 +59,7 @@ export const products: Product[] = [
     ],
     description: 'Heavyweight black tee with the Future graphic on the front and the BALE mark at the hem.',
     details: ['Boxy fit', 'Crew neck', 'Front graphic print'],
-    active: true,
+    active: false,
   },
   {
     slug: 'sweat-shorts-yellow',
@@ -73,7 +73,7 @@ export const products: Product[] = [
     ],
     description: 'Washed yellow sweat shorts with raw hems and the BALE mark on the leg.',
     details: ['Elastic drawstring waist', 'Side pockets and back pocket', 'Raw-cut hem'],
-    active: true,
+    active: false,
   },
   {
     slug: 'sweat-shorts-blue',
@@ -84,7 +84,7 @@ export const products: Product[] = [
     images: [{ src: P + 'shorts-blue-1.jpg', alt: 'Blue washed sweat shorts, front' }],
     description: 'Washed blue sweat shorts with raw hems and the BALE mark on the leg.',
     details: ['Elastic drawstring waist', 'Side pockets', 'Raw-cut hem'],
-    active: true,
+    active: false,
   },
   {
     slug: 'beanie',
@@ -98,14 +98,14 @@ export const products: Product[] = [
     ],
     description: 'Tan jacquard-knit beanie with an all-over sun pattern and BALE lettering on the front.',
     details: ['Jacquard knit', 'One size fits most'],
-    active: true,
+    active: false,
   },
   {
     slug: 'vest',
     name: 'Vest · Red',
     priceCents: 2000,
     category: 'Tops',
-    sizes: ['S', 'M', 'L', 'XL'],
+    sizes: ['S', 'M'],
     images: [
       { src: P + 'vest-1.jpg', alt: 'Red vest with white star print' },
       { src: P + 'vest-2.jpg', alt: 'Red vest with the BALE mark' },
@@ -119,9 +119,10 @@ export const products: Product[] = [
     name: 'Crown windbreaker · Blue',
     priceCents: 10000,
     category: 'Outerwear',
-    sizes: ['S', 'M', 'L', 'XL'],
+    sizes: ['M', 'L'],
     images: [
       { src: P + 'windbreaker-blue-1.jpg', alt: 'Model in the blue Crown windbreaker under a yellow umbrella at night' },
+      { src: P + 'windbreaker-blue-back.jpg', alt: 'Back of the blue Crown windbreaker with the hood up' },
       { src: P + 'windbreaker-blue-2.jpg', alt: 'Side view of the blue Crown windbreaker with the hood down' },
       { src: P + 'windbreaker-blue-3.jpg', alt: 'Blue Crown windbreaker worn with the hood up, crown logo on the chest' },
       { src: P + 'windbreaker-blue-4.jpg', alt: 'Close-up of the blue Crown windbreaker collar and crown logo' },
@@ -135,7 +136,7 @@ export const products: Product[] = [
     name: 'Down Undr jersey',
     priceCents: 4000,
     category: 'Tops',
-    sizes: ['S', 'M', 'L', 'XL'],
+    sizes: ['S', 'M', 'L'],
     images: [
       { src: P + 'jersey-1.jpg', alt: 'Model in the yellow Down Undr football jersey' },
       { src: P + 'jersey-2.jpg', alt: 'Back of the yellow Down Undr jersey with green trim' },
@@ -146,7 +147,8 @@ export const products: Product[] = [
     details: ['Football jersey cut', 'Green trim and piping', 'Embroidered crest'],
     active: true,
   },
-  // Coming soon: in the lookbook but not priced yet. Set comingSoon to false and add a price to sell them.
+  // Hidden for now (active: false). Set active: true to show a piece again.
+  // Coming soon: not priced yet. Set comingSoon to false and add a price to sell them.
   {
     slug: 'sweat-shorts-grey',
     name: 'Distressed sweat shorts · Grey',
@@ -160,7 +162,7 @@ export const products: Product[] = [
     ],
     description: 'Grey sweat shorts with hand-distressed rips and a tonal BALE mark on the leg.',
     details: ['Elastic waist', 'Distressed finish', 'Raw-cut hem'],
-    active: true,
+    active: false,
   },
   {
     slug: 'logo-t-shirt',
@@ -172,7 +174,7 @@ export const products: Product[] = [
     images: [{ src: P + 'logo-tee-1.jpg', alt: 'Black T-shirt with a large BALE mark on the back' }],
     description: 'Black heavyweight tee with an oversized BALE mark across the back.',
     details: ['Boxy fit', 'Large back print'],
-    active: true,
+    active: false,
   },
   {
     slug: 'beanie-script',
@@ -184,7 +186,7 @@ export const products: Product[] = [
     images: [{ src: P + 'beanie-alt-1.jpg', alt: 'Tan sun-pattern beanie with script lettering' }],
     description: 'The sun beanie with script lettering across the front.',
     details: ['Jacquard knit', 'One size fits most'],
-    active: true,
+    active: false,
   },
 ];
 

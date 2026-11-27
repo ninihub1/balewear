@@ -6,12 +6,12 @@ import { formatPrice, getActiveProducts, getProduct } from '@/lib/products';
 import { shippingConfig } from '@/lib/shipping';
 
 // Pieces shot on models lead the page; everything else sits in the rail below.
-const SPOTLIGHT = ['windbreaker-blue', 'down-undr-jersey'];
+const SPOTLIGHT = ['windbreaker-blue', 'down-undr-jersey', 'vest'];
 
 const LOOKBOOK = [
   { src: '/images/lookbook/cap-hood.jpg', alt: 'Model pulling up the hood of the blue Crown windbreaker' },
   { src: '/images/lookbook/jersey-umbrella.jpg', alt: 'Model in the Down Undr jersey and bandana' },
-  { src: '/images/lookbook/hood.jpg', alt: 'Blue Crown windbreaker with the hood up' },
+  { src: '/images/lookbook/jersey-guy.jpg', alt: 'Model in the Down Undr jersey holding the Crown windbreaker' },
   { src: '/images/lookbook/cap-smile.jpg', alt: 'Model smiling in the blue Crown windbreaker and a cap' },
 ];
 

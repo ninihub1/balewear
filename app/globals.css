@@ -217,7 +217,7 @@ details ul { margin: 0; padding-left: 18px; }
 .p-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 24px; }
 .p-label { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--text); }
 
-.p-spotlight { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+.p-spotlight { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
 .card-tall { gap: 14px; }
 .card-tall .card-media { aspect-ratio: 4 / 5; background: #000; }
 .card-tall .card-row { padding: 0 var(--gutter); font-size: 15px; letter-spacing: .02em; }
