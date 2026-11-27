@@ -18,6 +18,19 @@ export function AddToCart({ product }: { product: Product }) {
     setAdded(true);
   }
 
+  if (product.soldOut) {
+    return (
+      <div className="buy">
+        <button type="button" className="btn btn-block" disabled style={{ background: 'var(--surface-2)', color: 'var(--text)' }}>
+          Sold out
+        </button>
+        <p className="muted" style={{ margin: 0, fontSize: 14 }}>
+          Follow <a href="https://www.instagram.com/bale_wear" target="_blank" rel="noopener noreferrer">@bale_wear</a> for restocks.
+        </p>
+      </div>
+    );
+  }
+
   if (product.comingSoon) {
     return (
       <div className="buy">

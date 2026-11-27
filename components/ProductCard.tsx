@@ -19,7 +19,7 @@ export function ProductCard({
   const fit = variant === 'tall' ? 'cover' : 'contain';
   const cls = ['card', large && 'card-large', variant === 'tall' && 'card-tall'].filter(Boolean).join(' ');
   return (
-    <Link href={`/products/${product.slug}`} className={cls}>
+    <Link href={`/products/${product.slug}`} className={product.soldOut ? `${cls} card-sold` : cls}>
       <div
         className={back ? 'card-media has-back' : 'card-media'}
         style={product.photoBg ? { background: product.photoBg } : undefined}
@@ -30,11 +30,12 @@ export function ProductCard({
         )}
         {product.featured && large && <span className="tag">Signature piece</span>}
         {product.comingSoon && <span className="tag tag-soon">Coming soon</span>}
+        {product.soldOut && <span className="tag tag-soon">Sold out</span>}
       </div>
       <div className="card-row">
         <span>{product.name}</span>
-        <span className={product.comingSoon ? 'muted' : undefined}>
-          {product.comingSoon ? 'Coming soon' : formatPrice(product.priceCents)}
+        <span className={product.comingSoon || product.soldOut ? 'muted' : undefined}>
+          {product.soldOut ? 'Sold out' : product.comingSoon ? 'Coming soon' : formatPrice(product.priceCents)}
         </span>
       </div>
     </Link>

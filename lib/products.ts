@@ -18,6 +18,8 @@ export type Product = {
   featured?: boolean;
   // Shown on the site but not for sale yet: no price, can't be added to the cart or checked out.
   comingSoon?: boolean;
+  // Shown on the site but out of stock: can't be added to the cart or checked out.
+  soldOut?: boolean;
   // Background behind photos that don't fill the frame. Defaults to light grey.
   photoBg?: string;
   active: boolean;
@@ -45,7 +47,8 @@ export const products: Product[] = [
       'Full-zip hooded windbreaker in bright blue, with a classical painting printed across the body and sleeves.',
     details: ['Full zip with adjustable hood', 'All-over painting print', 'Drawcord hem', 'Elastic cuffs'],
     featured: true,
-    active: false,
+    soldOut: true,
+    active: true,
   },
   {
     slug: 't-shirt',
@@ -59,7 +62,8 @@ export const products: Product[] = [
     ],
     description: 'Heavyweight black tee with the Future graphic on the front and the BALE mark at the hem.',
     details: ['Boxy fit', 'Crew neck', 'Front graphic print'],
-    active: false,
+    soldOut: true,
+    active: true,
   },
   {
     slug: 'sweat-shorts-yellow',
@@ -73,7 +77,8 @@ export const products: Product[] = [
     ],
     description: 'Washed yellow sweat shorts with raw hems and the BALE mark on the leg.',
     details: ['Elastic drawstring waist', 'Side pockets and back pocket', 'Raw-cut hem'],
-    active: false,
+    soldOut: true,
+    active: true,
   },
   {
     slug: 'sweat-shorts-blue',
@@ -84,7 +89,8 @@ export const products: Product[] = [
     images: [{ src: P + 'shorts-blue-1.jpg', alt: 'Blue washed sweat shorts, front' }],
     description: 'Washed blue sweat shorts with raw hems and the BALE mark on the leg.',
     details: ['Elastic drawstring waist', 'Side pockets', 'Raw-cut hem'],
-    active: false,
+    soldOut: true,
+    active: true,
   },
   {
     slug: 'beanie',
@@ -98,7 +104,8 @@ export const products: Product[] = [
     ],
     description: 'Tan jacquard-knit beanie with an all-over sun pattern and BALE lettering on the front.',
     details: ['Jacquard knit', 'One size fits most'],
-    active: false,
+    soldOut: true,
+    active: true,
   },
   {
     slug: 'vest',
@@ -147,13 +154,12 @@ export const products: Product[] = [
     details: ['Football jersey cut', 'Green trim and piping', 'Embroidered crest'],
     active: true,
   },
-  // Hidden for now (active: false). Set active: true to show a piece again.
-  // Coming soon: not priced yet. Set comingSoon to false and add a price to sell them.
+  // Sold out: remove `soldOut: true` to put a piece back on sale.
+  // These three have no price yet: set priceCents before selling them.
   {
     slug: 'sweat-shorts-grey',
     name: 'Distressed sweat shorts · Grey',
     priceCents: 0,
-    comingSoon: true,
     category: 'Bottoms',
     sizes: ['S', 'M', 'L', 'XL'],
     images: [
@@ -162,36 +168,39 @@ export const products: Product[] = [
     ],
     description: 'Grey sweat shorts with hand-distressed rips and a tonal BALE mark on the leg.',
     details: ['Elastic waist', 'Distressed finish', 'Raw-cut hem'],
-    active: false,
+    soldOut: true,
+    active: true,
   },
   {
     slug: 'logo-t-shirt',
     name: 'Logo T-shirt',
     priceCents: 0,
-    comingSoon: true,
     category: 'Tops',
     sizes: ['S', 'M', 'L', 'XL'],
     images: [{ src: P + 'logo-tee-1.jpg', alt: 'Black T-shirt with a large BALE mark on the back' }],
     description: 'Black heavyweight tee with an oversized BALE mark across the back.',
     details: ['Boxy fit', 'Large back print'],
-    active: false,
+    soldOut: true,
+    active: true,
   },
   {
     slug: 'beanie-script',
     name: 'Sun beanie · Script',
     priceCents: 0,
-    comingSoon: true,
     category: 'Accessories',
     sizes: ['One size'],
     images: [{ src: P + 'beanie-alt-1.jpg', alt: 'Tan sun-pattern beanie with script lettering' }],
     description: 'The sun beanie with script lettering across the front.',
     details: ['Jacquard knit', 'One size fits most'],
-    active: false,
+    soldOut: true,
+    active: true,
   },
 ];
 
+// In-stock pieces first, then coming soon, then sold out.
 export function getActiveProducts(): Product[] {
-  return products.filter((p) => p.active);
+  const rank = (p: Product) => (p.soldOut ? 2 : p.comingSoon ? 1 : 0);
+  return products.filter((p) => p.active).sort((a, b) => rank(a) - rank(b));
 }
 
 export function getProduct(slug: string): Product | undefined {
@@ -201,7 +210,7 @@ export function getProduct(slug: string): Product | undefined {
 // Only products that can be bought: used by the cart and checkout.
 export function getBuyableProduct(slug: string): Product | undefined {
   const p = getProduct(slug);
-  return p && !p.comingSoon ? p : undefined;
+  return p && !p.comingSoon && !p.soldOut ? p : undefined;
 }
 
 export function formatPrice(cents: number): string {

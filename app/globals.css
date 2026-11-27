@@ -102,6 +102,7 @@ button { font: inherit; }
 .card-large .card-row { font-size: 17px; }
 .tag { position: absolute; top: 16px; left: 16px; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 10px; }
 .tag-soon { background: var(--text); color: var(--bg); }
+.card-sold .card-media img { filter: grayscale(.35); opacity: .7; }
 
 /* Feature split */
 .split { display: flex; gap: 48px; align-items: center; background: var(--surface); border: 1px solid var(--line); padding: 48px; }

@@ -63,7 +63,9 @@ export default function ProductPage({ params }: Props) {
             <p className="eyebrow">{product.category}</p>
             <h1 className="display pdp-title">{product.name}</h1>
             <p className="pdp-price">
-              {product.comingSoon ? (
+              {product.soldOut ? (
+                'Sold out'
+              ) : product.comingSoon ? (
                 'Coming soon'
               ) : (
                 <>
