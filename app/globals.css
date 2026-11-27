@@ -21,6 +21,7 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body), system-ui, sans-serif;
@@ -36,7 +37,7 @@ button { font: inherit; }
 :focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
 
 .container { width: 100%; max-width: var(--max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
-.display { font-family: var(--font-display), Impact, sans-serif; text-transform: uppercase; letter-spacing: -0.005em; line-height: 0.95; }
+.display { overflow-wrap: anywhere; font-family: var(--font-display), Impact, sans-serif; text-transform: uppercase; letter-spacing: -0.005em; line-height: 0.95; }
 .eyebrow { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-text); }
 .muted { color: var(--muted); }
 .cover { object-fit: cover; }
@@ -249,7 +250,10 @@ details ul { margin: 0; padding-left: 18px; }
   .p-hide-mobile { display: none; }
   .p-wordmark { font-size: 34vw; }
   .p-spotlight { grid-template-columns: 1fr; gap: 32px; }
-  .p-editorial, .p-editorial-flip { grid-template-columns: 1fr; margin-top: 56px; }
+  .p-editorial, .p-editorial-flip { grid-template-columns: minmax(0, 1fr); margin-top: 56px; }
+  .p-ed-title { font-size: 34px; }
+  .p-spotlight { grid-template-columns: minmax(0, 1fr); }
+  .p-look { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .p-editorial-flip .p-ed-media { order: 0; }
   .p-ed-copy { padding: 28px 16px 0; }
   .p-rail { grid-auto-columns: 70vw; }
@@ -273,14 +277,18 @@ details ul { margin: 0; padding-left: 18px; }
   .grid-3 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
   .card-large { grid-column: span 2; grid-row: span 1; }
   .card-large .card-media { min-height: 420px; }
-  .split, .pdp, .cart { flex-direction: column; }
+  .split, .pdp, .cart { flex-direction: column; align-items: stretch; }
+  .pdp-gallery, .pdp-info, .cart-lines, .summary { flex: none; width: 100%; }
+  .pdp { gap: 32px; padding-top: 16px; }
+  .pdp-gallery { grid-auto-flow: column; grid-auto-columns: 100%; overflow-x: auto; scroll-snap-type: x mandatory; gap: 0; }
+  .pdp-main { scroll-snap-align: start; }
   .split { padding: 24px; gap: 24px; }
   .split-copy h2 { font-size: 34px; }
   .split-media { width: 100%; height: 320px; }
   .look { height: 380px; }
   .info { grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 24px; }
   .pdp-info, .summary { position: static; width: 100%; }
-  .pdp-title { font-size: 40px; }
+  .pdp-title { font-size: 34px; }
   .prose h1 { font-size: 40px; }
   .summary { padding: 24px; }
 }
